@@ -1,13 +1,10 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { Button } from "@/components/ui/button";
+import AuthScreen from "@/features/auth/components/AuthScreen";
+import { AuthFlow } from "@/features/auth/types";
+import React, { useState } from "react";
 
 const Home = () => {
-  return (
-    <div>
-      <h1 className='text-lg font-bold text-red-500'>Hello world!</h1>
-      <Button>Click Me!</Button>
-    </div>
-  )
-}
+  return <AuthScreen/>
+};
 
-export default Home
+export default Home;
