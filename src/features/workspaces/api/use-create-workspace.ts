@@ -9,7 +9,7 @@ type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
   onSettled?: () => {};
-  throwError?: Boolean;
+  throwError?: boolean;
 };
 const useCreateWorkspace = () => {
   const [data, setData] = useState<ResponseType>(null);
