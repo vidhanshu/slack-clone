@@ -15,8 +15,7 @@ const UserButton = () => {
   const { signOut } = useAuthActions();
   const { data, isLoading } = useCurrentUser();
 
-  if (isLoading)
-    return <Loader className="size-10 animate-spin text-muted-foreground" />;
+  if (isLoading) return <Loader className="size-10 animate-spin text-muted-foreground" />;
   if (!data) return null;
 
   const { name, image, email } = data;

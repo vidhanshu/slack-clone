@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { AuthFlow } from "../types";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@/components/ui/button";
@@ -55,9 +49,7 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
         <CardTitle>Sign up to continue</CardTitle>
-        <CardDescription>
-          Use your email or another service to continue
-        </CardDescription>
+        <CardDescription>Use your email or another service to continue</CardDescription>
       </CardHeader>
       {!!error && (
         <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
@@ -98,12 +90,7 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
             type="password"
             required
           />
-          <Button
-            type="submit"
-            className="w-full"
-            size="lg"
-            disabled={isPending}
-          >
+          <Button type="submit" className="w-full" size="lg" disabled={isPending}>
             Continue
           </Button>
         </form>

@@ -14,9 +14,7 @@ type Options = {
 const useCreateWorkspace = () => {
   const [data, setData] = useState<ResponseType>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [state, setState] = useState<
-    "success" | "error" | "settled" | "pending" | null
-  >(null);
+  const [state, setState] = useState<"success" | "error" | "settled" | "pending" | null>(null);
 
   const isPending = useMemo(() => state === "pending", [state]);
   const isSuccess = useMemo(() => state === "success", [state]);
@@ -42,7 +40,7 @@ const useCreateWorkspace = () => {
         options?.onSettled?.();
       }
     },
-    [mutation]
+    [mutation],
   );
 
   return {

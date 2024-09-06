@@ -1,1 +1,1 @@
-export type AuthFlow = 'signIn' | "signUp"
+export type AuthFlow = "signIn" | "signUp";
