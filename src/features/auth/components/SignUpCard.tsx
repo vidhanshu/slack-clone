@@ -23,6 +23,7 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
     }
 
     setIsPending(true);
-    signIn("password", { email, password, flow: "signUp" })
+    signIn("password", { email, password, name, flow: "signUp" })
       .catch(() => {
         setError("Something Went Wrong");
       })
@@ -66,6 +67,13 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
       )}
       <CardContent className="space-y-5 px-0 pb-0">
         <form className="space-y-2.5" onSubmit={handlePasswordSignUp}>
+          <Input
+            disabled={isPending}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+            required
+          />
           <Input
             disabled={isPending}
             value={email}
