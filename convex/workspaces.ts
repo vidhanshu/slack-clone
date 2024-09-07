@@ -32,6 +32,10 @@ export const create = mutation({
       userId,
       workspaceId,
     });
+    await ctx.db.insert("channels", {
+      workspaceId,
+      name: "general",
+    });
 
     return workspaceId;
   },
