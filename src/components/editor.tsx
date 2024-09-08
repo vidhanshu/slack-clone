@@ -9,6 +9,7 @@ import Hint from "./hint";
 import useIsMacOS from "@/hooks/use-is-macos";
 import { Delta, Op } from "quill/core";
 import { cn } from "@/lib/utils";
+import EmojiPopover from "./emoji-popover";
 
 interface EditorProps {
   onSubmit: ({ image, body }: { image: File | null; body: string }) => void;
@@ -111,6 +112,11 @@ const Editor = ({
       .replace("\n", "")
       .replace(/<(.|\n)*?>/g, "").length === 0;
 
+  const onEmojiSelect = (emoji: any) => {
+    const quill = quillRef.current;
+    quill?.insertText(quill.getSelection()?.index || 0, emoji.native);
+  };
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col border border-slate-200 rounded-md overflow-hidden focus-within:border-slate-300 focus-within:shadow-sm transition bg-white">
@@ -121,11 +127,11 @@ const Editor = ({
               <PiTextAa className="size-4" />
             </Button>
           </Hint>
-          <Hint label="Add Emoji">
-            <Button disabled={disabled} onClick={() => {}} size="iconSm" variant="ghost">
+          <EmojiPopover onEmojiSelect={onEmojiSelect}>
+            <Button disabled={disabled} size="iconSm" variant="ghost">
               <Smile className="size-4" />
             </Button>
-          </Hint>
+          </EmojiPopover>
           {variant === "create" && (
             <Hint label="Add Image">
               <Button disabled={disabled} onClick={() => {}} size="iconSm" variant="ghost">
@@ -167,11 +173,18 @@ const Editor = ({
           )}
         </div>
       </div>
-      <div className="p-2 text-[10px] text-muted-foreground flex justify-end">
-        <p>
-          <strong>Shift + {isMacOs ? "Return" : "Enter"}</strong> to add a new line
-        </p>
-      </div>
+      {variant === "create" && (
+        <div
+          className={cn(
+            "p-2 text-[10px] text-muted-foreground flex justify-end opacity-0 transition",
+            !isEmpty && "opacity-100",
+          )}
+        >
+          <p>
+            <strong>Shift + {isMacOs ? "Return" : "Enter"}</strong> to add a new line
+          </p>
+        </div>
+      )}
     </div>
   );
 };
