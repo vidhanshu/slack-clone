@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
+import useChannelId from "@/hooks/use-channel-id";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { IconType } from "react-icons/lib";
 
@@ -35,6 +37,7 @@ const SidebarItem = ({
   variant?: VariantProps<typeof sidebarItemVariants>["variant"];
 }) => {
   const wId = useWorkspaceId();
+
   return (
     <Button
       size="sm"
