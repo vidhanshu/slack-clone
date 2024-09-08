@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCreateChanelModal } from "../store/use-create-channel-modal";
-import useCreateChannel from "../api/use-create-workspace";
+import useCreateChannel from "../api/use-create-channel";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 
 const CreateChannelModal = () => {

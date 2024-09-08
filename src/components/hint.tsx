@@ -12,7 +12,7 @@ const Hint = ({
 }: {
   label: string;
   side?: "top" | "right" | "bottom" | "left";
-  align: "start" | "center" | "end";
+  align?: "start" | "center" | "end";
 } & PropsWithChildren) => {
   return (
     <TooltipProvider>

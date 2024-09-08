@@ -4,14 +4,7 @@ import { useGetChannels } from "@/features/channels/api/use-get-channels";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 
 import useWorkspaceId from "@/hooks/use-workspace-id";
-import {
-  AlertTriangle,
-  HashIcon,
-  Loader,
-  MessageSquareText,
-  SendHorizontal,
-  User,
-} from "lucide-react";
+import { AlertTriangle, HashIcon, Loader, MessageSquareText, SendHorizontal } from "lucide-react";
 import WorkspaceHeader from "./workspace-header";
 import SidebarItem from "./sidebar-item";
 import WorkspaceSection from "./workspace-section";
