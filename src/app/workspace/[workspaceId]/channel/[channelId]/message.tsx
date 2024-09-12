@@ -17,6 +17,7 @@ import useToggleReaction from "@/features/reactions/api/use-toggle-reaction";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { useCurrentMember } from "@/features/members/api/use-current-member";
 import { MdOutlineAddReaction } from "react-icons/md";
+import { usePanel } from "@/hooks/use-panel";
 const Renderer = dynamic(() => import("./renderer"), { ssr: false });
 const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
@@ -67,6 +68,7 @@ const Message = ({
   const { mutate: removeMessage, isPending: isRemovePending } = useRemoveMessage();
   const { mutate: toggleReaction, isPending: isReactionPending } = useToggleReaction();
 
+  const { onOpenMessage, onClose, parentMessageId } = usePanel();
   const [ConfirmDialog, confirm] = useConfirm({
     message: "This is action irreversible. Are you sure?",
     title: "Are you sure?",
@@ -95,7 +97,7 @@ const Message = ({
       {
         onSuccess: () => {
           toast.success("Message removed");
-          //TODO: close the thread
+          if (parentMessageId === id) onClose();
         },
         onError: () => toast.error("Failed to remove message"),
       },
@@ -152,7 +154,7 @@ const Message = ({
             isAuthor={isAuthor}
             isPending={false}
             handleEdit={() => setEditingId(id)}
-            handleThread={() => {}}
+            handleThread={() => onOpenMessage(id)}
             handleDelete={handleDelete}
             handleReaction={handleReaction}
             hideThreadButton={hideThreadButton}
@@ -213,7 +215,7 @@ const Message = ({
           isAuthor={isAuthor}
           isPending={isPending}
           handleEdit={() => setEditingId(id)}
-          handleThread={() => {}}
+          handleThread={() => onOpenMessage(id)}
           handleDelete={handleDelete}
           handleReaction={handleReaction}
           hideThreadButton={hideThreadButton}
@@ -252,7 +254,7 @@ const Toolbar = ({
         </EmojiPopover>
         {!hideThreadButton && (
           <Hint label="Reply">
-            <Button size="iconSm" variant="ghost" disabled={isPending}>
+            <Button onClick={handleThread} size="iconSm" variant="ghost" disabled={isPending}>
               <MessageSquareText className="size-4" />
             </Button>
           </Hint>

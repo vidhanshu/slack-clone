@@ -29,7 +29,7 @@ const Renderer = ({ value }: { value: string }) => {
     return () => {
       if (container) container.innerHTML = "";
     };
-  }, []);
+  }, [value]);
 
   if (isEmpty) return null;
   return <div ref={rendererRef} className="ql-editor ql-renderer" />;
