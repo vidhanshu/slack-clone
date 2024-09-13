@@ -18,14 +18,14 @@ interface MessageListProps {
   memberImage?: string;
   variant?: "channel" | "thread" | "conversation";
 }
-const formatDateLabel = (dateStr: string) => {
+export const formatDateLabel = (dateStr: string) => {
   const date = new Date(dateStr);
   if (isToday(date)) return "Today";
   if (isYesterday(date)) return "Yesterday";
   return format(date, "yyyy-MM-dd");
 };
 
-const TIME_THRESHOLD = 5;
+export const TIME_THRESHOLD = 5;
 
 const MessageList = ({
   memberImage,
