@@ -11,18 +11,18 @@ const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
 interface ChatInputProps {
   placeholder: string;
+  conversationId: Id<"conversations">;
 }
 type CreateMessageValues = {
-  channelId: Id<"channels">;
   workspaceId: Id<"workspaces">;
+  conversationId: Id<"conversations">;
   body: string;
   image?: Id<"_storage">;
 };
-const ChatInput = ({ placeholder }: ChatInputProps) => {
+const ChatInput = ({ placeholder, conversationId }: ChatInputProps) => {
   const [editorKey, setEditorKey] = useState(0);
   const [pending, setPending] = useState(false);
   const editorRef = useRef<Quill | null>(null);
-  const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
   const { mutate: sendMessage } = useCreateMessage();
   const { mutate: generateUploadUrl } = useGenerateUploadUrl();
@@ -34,7 +34,7 @@ const ChatInput = ({ placeholder }: ChatInputProps) => {
       const values: CreateMessageValues = {
         body,
         workspaceId,
-        channelId,
+        conversationId,
       };
       if (image) {
         const url = await generateUploadUrl({}, { throwError: true });

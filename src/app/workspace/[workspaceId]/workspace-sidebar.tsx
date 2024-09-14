@@ -11,8 +11,10 @@ import WorkspaceSection from "./workspace-section";
 import UserItem from "./user-item";
 import { useCreateChanelModal } from "@/features/channels/store/use-create-channel-modal";
 import { usePathname } from "next/navigation";
+import useMemberId from "@/hooks/use-member-id";
 
 const WorkspaceSidebar = () => {
+  const memberId = useMemberId();
   const workspaceId = useWorkspaceId();
   const [_, setOpen] = useCreateChanelModal();
   const pathname = usePathname();
@@ -61,7 +63,13 @@ const WorkspaceSidebar = () => {
       </WorkspaceSection>
       <WorkspaceSection label="Direct Messages" hint="New Direct Messages" onNew={() => {}}>
         {members?.map((item) => (
-          <UserItem id={item._id} image={item.user.image} label={item.user.name} key={item._id} />
+          <UserItem
+            id={item._id}
+            image={item.user.image}
+            label={item.user.name}
+            key={item._id}
+            variant={item._id === memberId ? "active" : "default"}
+          />
         ))}
       </WorkspaceSection>
     </div>
