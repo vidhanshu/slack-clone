@@ -21,9 +21,9 @@ import {
 } from "@/app/workspace/[workspaceId]/channel/[channelId]/message-list";
 const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
-interface ChatInputProps {
-  placeholder: string;
-}
+// interface ChatInputProps {
+//   placeholder: string;
+// }
 type CreateMessageValues = {
   channelId: Id<"channels">;
   workspaceId: Id<"workspaces">;
@@ -34,6 +34,7 @@ type CreateMessageValues = {
 const Thread = ({ messageId, onClose }: { messageId: Id<"messages">; onClose: () => void }) => {
   const channelId = useChannelId();
   const [editorKey, setEditorKey] = useState(0);
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [pending, setPending] = useState(false);
 
   const editorRef = useRef<Quill | null>(null);
@@ -44,7 +45,7 @@ const Thread = ({ messageId, onClose }: { messageId: Id<"messages">; onClose: ()
 
   const [editingId, setEditingId] = useState<Id<"messages"> | null>(null);
   const { data: message, isLoading: isMessageLoading } = useGetMessage({ id: messageId });
-  const { data: currentMember, isLoading: currentMemberLoading } = useCurrentMember({
+  const { data: currentMember } = useCurrentMember({
     workspaceId: wId,
   });
   const { loadMore, results, status } = useGetMessages({ channelId, parentMessageId: messageId });

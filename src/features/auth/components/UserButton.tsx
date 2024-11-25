@@ -18,7 +18,7 @@ const UserButton = () => {
   if (isLoading) return <Loader className="size-10 animate-spin text-muted-foreground" />;
   if (!data) return null;
 
-  const { name, image, email } = data;
+  const { name, image } = data;
   const avatarFallBack = name!.charAt(0).toUpperCase();
 
   return (

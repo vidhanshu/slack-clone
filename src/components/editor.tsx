@@ -127,7 +127,6 @@ const Editor = ({
       .trim()
       .replace("\n", "")
       .replace(/<(.|\n)*?>/g, "").length === 0;
-
   const onEmojiSelect = (emoji: any) => {
     const quill = quillRef.current;
     quill?.insertText(quill.getSelection()?.index || 0, emoji.native);

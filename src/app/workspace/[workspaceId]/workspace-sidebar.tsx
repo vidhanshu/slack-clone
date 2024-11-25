@@ -16,13 +16,14 @@ import useMemberId from "@/hooks/use-member-id";
 const WorkspaceSidebar = () => {
   const memberId = useMemberId();
   const workspaceId = useWorkspaceId();
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [_, setOpen] = useCreateChanelModal();
   const pathname = usePathname();
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({ workspaceId });
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: workspaceId });
-  const { data: channels, isLoading: isChannelsLoading } = useGetChannels({ workspaceId });
-  const { data: members, isLoading: isLoadingMembers } = useGetMembers({ workspaceId });
+  const { data: channels } = useGetChannels({ workspaceId });
+  const { data: members } = useGetMembers({ workspaceId });
 
   if (workspaceLoading || memberLoading)
     return (

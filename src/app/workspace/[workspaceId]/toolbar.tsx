@@ -6,7 +6,7 @@ import React from "react";
 
 const Toolbar = () => {
   const wId = useWorkspaceId();
-  const { data, isLoading } = useGetWorkspace({ id: wId });
+  const { data } = useGetWorkspace({ id: wId });
 
   return (
     <nav className="bg-[#481349] flex items-center justify-between h-10 p-1.5">

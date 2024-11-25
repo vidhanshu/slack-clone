@@ -47,7 +47,6 @@ const formatFullTime = (date: Date) => {
 };
 const Message = ({
   id,
-  memberId,
   authorImage,
   authorName = "Member",
   isAuthor,
@@ -55,9 +54,6 @@ const Message = ({
   image,
   updatedAt,
   createAt,
-  threadCount,
-  threadImage,
-  threadTimestamp,
   isEditing,
   setEditingId,
   isCompact,
@@ -66,7 +62,7 @@ const Message = ({
 }: MessageProps) => {
   const { mutate: updateMessage, isPending: isUpdatePending } = useUpdateMessage();
   const { mutate: removeMessage, isPending: isRemovePending } = useRemoveMessage();
-  const { mutate: toggleReaction, isPending: isReactionPending } = useToggleReaction();
+  const { mutate: toggleReaction } = useToggleReaction();
 
   const { onOpenMessage, onClose, parentMessageId } = usePanel();
   const [ConfirmDialog, confirm] = useConfirm({

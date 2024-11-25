@@ -37,7 +37,7 @@ const ChannelHeader = ({ name }: { name: string }) => {
     message: "You are about to delete this channel. This action cannot be undone.",
   });
 
-  const handleEditOpen = (value: boolean) => {
+  const handleEditOpen = () => {
     if (member?.role !== "admin") return;
     setEditOpen(true);
   };

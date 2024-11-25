@@ -40,6 +40,7 @@ const WorkspaceIdPage = () => {
     workspaceId,
     setOpen,
     router,
+    isAdmin
   ]);
 
   useEffect(() => {

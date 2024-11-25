@@ -1,7 +1,7 @@
 import { useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { useCallback, useMemo, useState } from "react";
-import { Doc, Id } from "../../../../convex/_generated/dataModel";
+import { Id } from "../../../../convex/_generated/dataModel";
 
 type RequestType = {
   workspaceId: Id<"workspaces">;
@@ -11,7 +11,7 @@ type ResponseType = Id<"conversations"> | null;
 type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
-  onSettled?: () => {};
+  onSettled?: () => void;
   throwError?: boolean;
 };
 const useCreateOrGetConversation = () => {

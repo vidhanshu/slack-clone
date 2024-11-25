@@ -14,7 +14,7 @@ const MemberIdPage = () => {
   const workspaceId = useWorkspaceId();
   const memberId = useMemberId();
   const [conversationId, setConversationId] = useState<Id<"conversations"> | null>(null);
-  const { mutate: createOrGetConversation, isPending, data } = useCreateOrGetConversation();
+  const { mutate: createOrGetConversation, isPending } = useCreateOrGetConversation();
 
   useEffect(() => {
     createOrGetConversation(
@@ -26,7 +26,7 @@ const MemberIdPage = () => {
         onSuccess: (data) => {
           setConversationId(data);
         },
-        onError: (error) => {
+        onError: () => {
           toast.error("Failed to get conversation");
         },
       },

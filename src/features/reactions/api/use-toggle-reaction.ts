@@ -11,7 +11,7 @@ type ResponseType = Id<"reactions"> | null;
 type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
-  onSettled?: () => {};
+  onSettled?: () => void;
   throwError?: boolean;
 };
 const useToggleReaction = () => {

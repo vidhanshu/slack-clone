@@ -8,7 +8,7 @@ type ResponseType = Id<"workspaces"> | null;
 type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
-  onSettled?: () => {};
+  onSettled?: () => void;
   throwError?: boolean;
 };
 const useCreateWorkspace = () => {

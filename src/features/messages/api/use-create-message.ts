@@ -15,7 +15,7 @@ type ResponseType = Id<"messages"> | null;
 type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
-  onSettled?: () => {};
+  onSettled?: () => void;
   throwError?: boolean;
 };
 const useCreateMessage = () => {

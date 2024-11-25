@@ -15,10 +15,11 @@ import { useRouter } from "next/navigation";
 
 const WorkspaceSwitcher = () => {
   const router = useRouter();
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [_, setOpen] = useCreateWorkSpaceModal();
 
   const wId = useWorkspaceId();
-  const { data: workspaces, isLoading: workspacesLoading } = useGetWorkspaces();
+  const { data: workspaces } = useGetWorkspaces();
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: wId });
 
   const filteredWorkspaces = workspaces?.filter((w) => w._id !== wId);
